@@ -1,0 +1,12 @@
+Package: origindest
+Type: Package
+Title: Reshape data into origin-destination pairs
+Version: 0.0.1
+Author: James Thomas
+Maintainer: James Thomas <jamesethomas@gmx.com>
+Description: Package to help with the reshaping of dataframe(s) containing 
+locations into the standard origin-destination format required for the 
+calculation of distances and drive times between locations.
+License: None
+Encoding: UTF-8
+LazyData: true
