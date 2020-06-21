@@ -15,10 +15,10 @@ origins (\code{x}) and the other containing the destinations (\code{y}).
 
 \code{origin_dest1} outputs a dataframe with:
 
-  - \code{ncol(x)*2} columns;
-
-  - \code{(nrow(x))*(nrow(x)-1)} rows.
-
+\itemize{
+\item{\code{ncol(x)*2} columns;}
+\item{\code{(nrow(x))*(nrow(x)-1)} rows.}
+}
 There are two times as many columns as in the original dataframe because each
 observation is now an origin-destination pair. This means that for each
 original column in the dataframe there is now an 'origin' column (whose name
