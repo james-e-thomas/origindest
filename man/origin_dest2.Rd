@@ -1,5 +1,5 @@
-\name{origin_dest1}
-\alias{origin_dest1}
+\name{origin_dest2}
+\alias{origin_dest2}
 \title{Reshape data into origin-destination pairs}
 \description{
 Requires \code{dplyr} and \code{tidyr} packages from \code{tidyverse} to be
