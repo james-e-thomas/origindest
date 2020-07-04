@@ -1,20 +1,21 @@
-function(x, y) {
+origin_dest2 <- function(x, y) {
   colnames(x) <- paste0("origin_", colnames(x))
   colnames(y) <- paste0("dest_", colnames(y))
-  x <- uncount(x, nrow(y))
-  y <- uncount(y, nrow(x)/nrow(y))
-  y <- mutate(y, row_number = rownames(y))
   rownames(x) <- c()
   rownames(y) <- c()
-  y <- mutate(y,
-              row_number = gsub("^([0-9]+)$", "\\1\\.0", row_number),
-              row_number2 = gsub("([0-9]+)(\\.)([0-9]+)", "\\1", row_number),
-              row_number = gsub("([0-9]+)(\\.)([0-9]+)", "\\3", row_number),
-              row_number = as.numeric(row_number),
-              row_number2 = as.numeric(row_number2)
+  y <- dplyr::mutate(y,
+                     row_number = rownames(y),
+                     row_number = as.numeric(row_number)
   )
-  y <- arrange(y, row_number, row_number2)
+  y2 <- as.data.frame(rep(1:nrow(x), nrow(y)))
+  colnames(y2) <- "row_number2"
+  y <- tidyr::uncount(y, nrow(x))
+  y <- cbind.data.frame(y, y2)
+  rm(y2)
+  y <- dplyr::arrange(y, row_number2, row_number)
+  x <- tidyr::uncount(x, nrow(y)/nrow(x))
   x <- cbind.data.frame(x, y)
   rm(y)
-  x <- select(x, !starts_with("row_number"))
+  rownames(x) <- c()
+  x <- dplyr::select(x, !starts_with("row_number"))
 }
